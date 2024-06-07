@@ -1,15 +1,15 @@
 package com.hhq.user.controller;
 
+import com.hhq.user.service.EchoService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-@RequestMapping("/user")
 @RestController
 public class UserController {
-    @Value("${username}")
-    private String userName;
+
+    @Autowired
+    private EchoService echoService;
 
     @Value("${server.port}")
     private String port;
@@ -19,4 +19,10 @@ public class UserController {
         System.out.println(port);
         return port;
     }
+
+    @GetMapping(value = "/product/port")
+    public String feign() {
+        return echoService.getServerPort();
+    }
+
 }
