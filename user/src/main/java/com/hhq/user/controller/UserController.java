@@ -14,7 +14,7 @@ public class UserController {
     @Value("${server.port}")
     private String port;
 
-    @GetMapping
+    @GetMapping(value = "/port")
     public String user() {
         System.out.println(port);
         return port;
