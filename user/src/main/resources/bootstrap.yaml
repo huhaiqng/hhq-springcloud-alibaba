@@ -4,6 +4,9 @@ server:
     context-path: /user
 
 spring:
+  mvc:
+    pathmatch:
+      matching-strategy: ant-path-matcher
   application:
     name: user
   cloud:
@@ -12,3 +15,12 @@ spring:
         file-extension: yaml
     discovery:
       server-addr: 127.0.0.1:8848
+  datasource:
+    url: jdbc:mysql://localhost:3306/weibbix?useUnicode=true&characterEncoding=utf8
+    username: root
+    password: MySQL8.0
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+springfox:
+  documentation:
+    enabled: true

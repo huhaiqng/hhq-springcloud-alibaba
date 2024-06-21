@@ -1,10 +1,15 @@
 package com.hhq.user.controller;
 
+import com.hhq.user.entity.User;
+import com.hhq.user.mapper.UserMapper;
 import com.hhq.user.service.EchoService;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
+import java.util.List;
 
+@Api(value = "用户管理", tags = "用户管理")
 @RestController
 public class UserController {
 
@@ -25,4 +30,15 @@ public class UserController {
         return echoService.getServerPort();
     }
 
+    @Autowired
+    private UserMapper userMapper;
+
+    @GetMapping(value = "/all")
+    public int all() {
+        System.out.println(("----- selectAll method test ------"));
+        List<User> userList = userMapper.selectList(null);
+        int userCount = userList.size();
+        userList.forEach(System.out::println);
+        return userCount;
+    }
 }
