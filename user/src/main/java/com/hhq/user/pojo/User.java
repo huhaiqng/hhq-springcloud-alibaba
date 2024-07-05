@@ -1,4 +1,4 @@
-package com.hhq.user.entity;
+package com.hhq.user.pojo;
 
 import lombok.Data;
 

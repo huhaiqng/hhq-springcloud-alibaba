@@ -19,8 +19,10 @@ spring:
     url: jdbc:mysql://localhost:3306/weibbix?useUnicode=true&characterEncoding=utf8
     username: root
     password: MySQL8.0
-    driver-class-name: com.mysql.cj.jdbc.Driver
 
 springfox:
   documentation:
     enabled: true
+
+mybatis-plus:
+  mapper-locations: classpath:/mapper/**.xml
