@@ -34,8 +34,13 @@ public class UserController {
 
     @PostMapping(value = "/add")
     public ResponseResult<User> add(@RequestBody User user) {
-        boolean i = userService.save(user);
-        return ResponseResult.success();
+        try {
+            userService.save(user);
+            return ResponseResult.success(user);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseResult.fail(e.getMessage(),user);
+        }
     }
 
     @GetMapping(value = "/product/port")
